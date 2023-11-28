@@ -68,14 +68,7 @@
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text"  name="passport_or_nic" value="{{old('passport_or_nic')}}" placeholder="Username">
-                        </div>
-                        @error('passport_or_nic')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+
                     <div class="form-group">
                         <div class="col-xs-12">
                             <input class="form-control" type="number"  name="phone" value="{{old('phone')}}" placeholder="Phone">

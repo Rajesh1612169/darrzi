@@ -25,7 +25,7 @@
                 <li>
                     <a class="" href="{{route('user.profile')}}" >
                         <i class="ti-user"></i>
-                        Profile</a>
+                        Users</a>
                 </li>
 
             </ul>

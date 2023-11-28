@@ -33,7 +33,7 @@ class AuthController extends Controller
             }
             else {
                 $request->session()->regenerate();
-                return redirect()->route('home.index');
+                return redirect()->route('dashboard');
             }
         }
 
@@ -61,7 +61,6 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email:rfc,dns|unique:users,email',
-            'passport_or_nic' => 'required|unique:users,passport_or_nic',
             'phone' => 'required',
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password'
@@ -69,14 +68,10 @@ class AuthController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
 
         $validatedData['role_id'] = 2;
-        $validatedData['verification_code'] = $this->generateRandomString(6);
 //        dd($validatedData);
 
         $user = User::create($validatedData);
 
-        $user_detail['user_id'] = $user->id;
-
-        $user_details = UserDetails::create($user_detail);
 //        dd($user->id);
 
         Mail::to($validatedData['email'])->send(new VerificationMail($user->id));

@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs.index');
-Route::get('/team', [HomeController::class, 'ourTeam'])->name('our-team.index');
-Route::get('/about', [HomeController::class, 'aboutUs'])->name('about.index');
-Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact.index');
+//Route::get('/', [HomeController::class, 'index'])->name('home.index');
+//Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs.index');
+//Route::get('/team', [HomeController::class, 'ourTeam'])->name('our-team.index');
+//Route::get('/about', [HomeController::class, 'aboutUs'])->name('about.index');
+//Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact.index');
 
 
 Route::group(['middleware' => ['web', 'guest']], function () {
@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web', 'guest']], function () {
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/user/profile', [UserProfileController::class, 'index'])->name('user.profile');
     Route::post('/user/profile/avatar/post', [UserProfileController::class, 'saveAvatar'])->name('user.profile.avatar');
     Route::post('/user/profile/nic/front', [UserProfileController::class, 'nicFront'])->name('user.profile.nic.front');
